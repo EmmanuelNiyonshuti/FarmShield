@@ -1,0 +1,21 @@
+{
+  "name": "farmshield",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "node --watch --env-file=.env server/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "colors": "^1.4.0",
+    "express": "^4.21.1",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^8.8.3"
+  }
+}
