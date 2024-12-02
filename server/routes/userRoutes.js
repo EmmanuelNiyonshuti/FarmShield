@@ -1,6 +1,6 @@
 
 import express from 'express';
-import AuthController from '../controllers/authController.js';
+import AuthController from '../controllers/userController.js';
 import asyncHandler from "express-async-handler"
 import authUser from '../middlewares/auth.js';
 
