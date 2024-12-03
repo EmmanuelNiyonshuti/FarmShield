@@ -6,6 +6,11 @@ const pestReportSchema = new mongoose.Schema({
         ref: 'User',
         required: true,
     },
+    crop: {
+        type: String,
+        trim: true,
+        required: true,
+    },
     pestName: {
         type: String,
         trim: true,
