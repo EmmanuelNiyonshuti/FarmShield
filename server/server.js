@@ -3,7 +3,7 @@ import connectDB from './config/db.js';
 import router from './routes/userRoutes.js';
 import logger from './middlewares/logger.js';
 import customError from './utils/customError.js';
-import globalErrorHandler from './middlewares/errors.js';
+import gErrorHandler from './middlewares/errors.js';
 
 const port = process.env.PORT || 3000;
 
@@ -19,7 +19,7 @@ app.all('*', (req, res, next) => {
     const err = new customError(`Can't find ${req.originalUrl} on the server`, 404)
     next(err);
 })
-app.use(globalErrorHandler);
+app.use(gErrorHandler);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

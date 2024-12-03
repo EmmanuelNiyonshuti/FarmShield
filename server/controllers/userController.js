@@ -16,7 +16,7 @@ class AuthController {
         }
         const user = await User.findOne({ email });
         if (user){
-            return res.status(409).json({ msg: `User with email ${email} already exists, please use another email`});
+            return res.status(409).json({ msg: `User with ${email} already exists, please use another email`});
         }
         const saltRounds = 10;
         const hashedPwd = await bcrypt.hash(password, saltRounds);

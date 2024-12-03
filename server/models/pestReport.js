@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import User from "./User";
 
 const pestReportSchema = new mongoose.Schema({
     userId: {
@@ -13,14 +12,15 @@ const pestReportSchema = new mongoose.Schema({
         required: true,
     },
     location: {
-        latitude: {
-            type: Number,
-            required: true,
+        type: { 
+            type: String, 
+            enum: ['Point'], 
+            required: true 
         },
-        longitude: {
-            type: Number,
-            required: true,
-        },
+        coordinates: { 
+            type: [Number],
+            required: true 
+        }
     },
     address: {
         type: String,
@@ -36,10 +36,10 @@ const pestReportSchema = new mongoose.Schema({
         enum: ['Low', 'Medium', 'High', 'Critical'],
         default: 'Low',
     },
-    imageUrl: {
+    images: [{
         type: String,
         required: false,
-    },
+    }],
     reportDate: {
         type: Date,
         default: Date.now,
@@ -48,6 +48,8 @@ const pestReportSchema = new mongoose.Schema({
 }, {
     timestamps: true,
 })
+
+pestReportSchema.index({ location: '2dsphere'});
 
 const pestReport = mongoose.model('PestReport', pestReportSchema);
 
