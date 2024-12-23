@@ -1,22 +1,18 @@
-
 import express from 'express';
 import AuthController from '../controllers/userController.js';
 import asyncHandler from "express-async-handler"
 import authUser from '../middlewares/auth.js';
-import pestReportRoutes from './pestReportRoutes.js';
-import index from './index.js'
 
+const authRouter = express.Router();
 
-const router = express.Router();
+authRouter
+    .route('/register')
+    .post(asyncHandler(AuthController.register))
+authRouter
+    .route('/login')
+    .post(asyncHandler(AuthController.login))
+authRouter
+    .route('/getMe')
+    .get(authUser, asyncHandler(AuthController.me))
 
-//API status
-router.use('/status', index);
-// user authentication routes
-router.post('/auth/register', asyncHandler(AuthController.register));
-router.post('/auth/login', asyncHandler(AuthController.login));
-router.get('/auth/getMe', authUser, asyncHandler(AuthController.me));
-
-// pest outbreak reporting routes
-router.use('/reports', pestReportRoutes);
-
-export default router;
+export default authRouter;

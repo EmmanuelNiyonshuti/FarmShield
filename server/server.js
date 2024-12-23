@@ -1,6 +1,6 @@
 import express from 'express';
 import connectDB from './config/db.js';
-import router from './routes/userRoutes.js';
+import router from './routes/index.js';
 import logger from './middlewares/logger.js';
 import customError from './utils/customError.js';
 import gErrorHandler from './middlewares/errors.js';
