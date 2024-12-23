@@ -12,9 +12,9 @@ const app = express();
 
 app.use(logger);
 app.use(express.json());
-app.use(express.urlencoded({ extended: true}));
+app.use(express.urlencoded({extended: true}));
 
-app.use('/api', router);
+app.use('/api/v1', router);
 app.all('*', (req, res, next) => {
     const err = new customError(`Can't find ${req.originalUrl} on the server`, 404)
     next(err);
